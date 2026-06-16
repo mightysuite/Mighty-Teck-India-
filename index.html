@@ -184,8 +184,7 @@
             position: relative;
             z-index: 10;
             opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+            visibility: hidden; 
         }
 
         .transition-text-reveal {
@@ -222,7 +221,6 @@
 </head>
 <body class="bg-[#010103]">
 
-    <!-- CART SYSTEM UI -->
     <!-- Floating Cart Button -->
     <div id="cart-btn-container" class="fixed bottom-8 right-8 z-[80] opacity-0 translate-y-10 pointer-events-none transition-all duration-500">
         <button id="floating-cart-btn" class="bg-gold text-black p-5 rounded-full shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-110 transition-transform flex items-center justify-center">
@@ -340,8 +338,15 @@
 
     <canvas id="global-canvas"></canvas>
 
+    <!-- NEW: AUTOMATED INTRO OVERLAY -->
+    <div id="intro-overlay" class="fixed inset-0 z-[50] flex flex-col items-center justify-end pb-24 md:pb-32 pointer-events-none">
+        <h2 class="intro-text opacity-0 transform translate-y-8 filter blur-md text-xs md:text-sm font-black heading-font tracking-[0.5em] text-center">
+            <span class="text-cyan-400 drop-shadow-[0_0_10px_rgba(0,240,255,0.8)]">READY TO</span> <span class="text-gradient-gold drop-shadow-[0_0_10px_rgba(212,175,55,0.8)]">EVOLVE?</span>
+        </h2>
+    </div>
+
     <!-- TRANSITION SCREEN -->
-    <div id="transition-screen" class="fixed inset-0 z-[60] bg-[#010103] flex flex-col items-center justify-center opacity-0 invisible">
+    <div id="transition-screen" class="fixed inset-0 z-[60] bg-[#010103] flex flex-col items-center justify-center opacity-0 invisible pointer-events-none">
         <div class="text-center px-4">
             <h2 class="heading-font text-lg md:text-2xl font-black text-white tracking-[0.3em] mb-8">
                 BUILD WITH <span class="text-gradient-gold">MIGHTY SUITE</span>
@@ -355,34 +360,18 @@
     <!-- FLYING PLANE BANNER -->
     <div id="plane-banner" class="fixed top-[15%] md:top-[20%] -left-[100%] z-[70] flex items-center pointer-events-none opacity-0">
         <div class="relative flex items-center">
-            <!-- Jet Trail -->
-            <div class="absolute right-[90%] top-1/2 w-32 md:w-64 h-[2px] bg-gradient-to-r from-transparent to-cyan-400/80 -translate-y-1/2 mr-2"></div>
-            <!-- Plane Icon -->
-            <i data-lucide="plane" class="text-cyan-400 w-8 h-8 md:w-10 md:h-10 transform rotate-45 drop-shadow-[0_0_10px_rgba(0,240,255,0.8)] fill-cyan-400/20 z-10 relative"></i>
-            <!-- Banner -->
-            <div class="ml-2 bg-white/5 backdrop-blur-md border border-gold/40 px-4 md:px-8 py-2 md:py-3 shadow-[0_0_15px_rgba(212,175,55,0.3)] skew-x-[-15deg]">
+            <!-- Banner (Trailing behind) -->
+            <div class="bg-white/5 backdrop-blur-md border border-gold/40 px-4 md:px-8 py-2 md:py-3 shadow-[0_0_15px_rgba(212,175,55,0.3)] skew-x-[-15deg] z-10">
                 <span class="heading-font text-gradient-gold text-[10px] md:text-sm font-black tracking-[0.3em] uppercase block skew-x-[15deg] whitespace-nowrap">
                     Get your website today
                 </span>
             </div>
-        </div>
-    </div>
 
-    <!-- ZOOM INTRO SEQUENCE -->
-    <div id="intro-void" class="h-[1200vh] relative z-20">
-        <div class="sticky top-0 h-screen w-full pointer-events-none overflow-hidden">
-            <div class="absolute bottom-12 left-0 w-full flex flex-col items-center justify-end px-4">
-                <div class="flex flex-col items-center text-center mb-6">
-                    <h2 class="intro-text transition-text-reveal text-xs md:text-sm font-black heading-font tracking-[0.5em]">
-                        <span class="text-cyan-400">READY TO</span> <span class="text-gradient-gold">EVOLVE?</span>
-                    </h2>
-                </div>
-                
-                <div id="initial-scroll-indicator" class="flex flex-col items-center gap-2 opacity-0">
-                    <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase font-bold">Scroll to Initiate</span>
-                    <i data-lucide="chevron-down" class="text-gold/50 w-4 h-4"></i>
-                </div>
-            </div>
+            <!-- Glowing Blue Tow Line (Between banner and plane) -->
+            <div class="w-16 md:w-32 h-[2px] bg-gradient-to-r from-transparent to-cyan-400/80 z-0"></div>
+
+            <!-- Plane Icon (Leading the way) -->
+            <i data-lucide="plane" class="text-cyan-400 w-8 h-8 md:w-10 md:h-10 transform rotate-45 drop-shadow-[0_0_10px_rgba(0,240,255,0.8)] fill-cyan-400/20 z-20 relative -ml-2"></i>
         </div>
     </div>
 
@@ -591,6 +580,92 @@
                             <p class="text-xs text-white/40">Robust digital architecture built to handle aggressive growth from 10 to 10,000+ daily active users.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEURAL PROTOTYPE ENGINE (NEW FEATURE) -->
+        <section id="ai-generator" class="py-24 bg-[#050508]/50 border-y border-white/5 relative z-10 overflow-hidden">
+            <!-- Decorative Glows -->
+            <div class="absolute top-1/2 left-0 w-96 h-96 bg-cyan-400/5 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none"></div>
+            <div class="absolute top-1/2 right-0 w-96 h-96 bg-gold/5 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 w-full relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-cyan-400 text-[10px] font-black tracking-[0.8em] uppercase mb-4 block flex items-center justify-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Live AI Demo
+                    </span>
+                    <h2 class="powerful-caption">TURN YOUR IDEA <span class="text-gradient-cyan">INTO REALITY</span></h2>
+                    <p class="max-w-2xl mx-auto text-white/60 font-light leading-relaxed text-sm md:text-base">
+                        How would you like your website to look and function? Please provide the details below, and our neural engine will instantly generate a custom structural blueprint of your digital presence. Experience top-tier development, before you even commit.
+                    </p>
+                </div>
+
+                <div class="glass-card border-cyan-400/20 p-6 md:p-10 reveal flex flex-col lg:flex-row gap-8 lg:gap-12 shadow-[0_0_30px_rgba(0,240,255,0.05)]">
+                    
+                    <!-- Left: Control Panel -->
+                    <div class="w-full lg:w-1/3 flex flex-col justify-center">
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold text-white mb-2 heading-font">Initialize Build</h3>
+                            <p class="text-xs text-white/50 leading-relaxed">Give us a prompt. For example: "A luxury watch boutique with a dark theme", or "A modern fitness coaching app".</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="ai-prompt" class="block text-[10px] uppercase tracking-widest text-cyan-400 font-bold mb-2">Industry / Concept</label>
+                                <textarea id="ai-prompt" rows="3" class="custom-input text-sm resize-none" placeholder="e.g. A sleek, high-end cybersecurity firm looking to attract enterprise clients..."></textarea>
+                            </div>
+                            
+                            <button id="generate-prototype-btn" class="btn-glow border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black w-full flex justify-center items-center gap-2 group transition-all">
+                                <i data-lucide="cpu" class="w-4 h-4 group-hover:animate-pulse"></i> Generate Blueprint
+                            </button>
+                        </div>
+
+                        <div class="mt-8 pt-8 border-t border-white/10 hidden" id="claim-design-container">
+                            <p class="text-xs text-white/60 mb-4">Impressed? This is just an AI draft. Imagine what our senior human architects can do.</p>
+                            <a href="#director" class="btn-glow btn-gold w-full text-center text-[10px]">Claim & Upgrade This Design</a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Display Canvas -->
+                    <div class="w-full lg:w-2/3 h-[400px] lg:h-[600px] bg-black border border-white/10 rounded-xl relative overflow-hidden flex flex-col shadow-inner">
+                        <!-- Browser-like Header -->
+                        <div class="h-8 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2">
+                            <div class="flex gap-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-amber-500/50"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                            </div>
+                            <div class="mx-auto bg-white/5 rounded px-24 py-0.5 text-[8px] text-white/30 tracking-widest font-mono">live-preview.mightysuite.dev</div>
+                        </div>
+                        
+                        <!-- Content Area -->
+                        <div class="flex-1 relative bg-white" id="iframe-wrapper">
+                            <!-- Idle State -->
+                            <div id="ai-idle-state" class="absolute inset-0 bg-[#050508] z-20 flex flex-col items-center justify-center p-6 text-center">
+                                <div class="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center mb-6 bg-white/5">
+                                    <i data-lucide="layout-template" class="w-8 h-8 text-white/20"></i>
+                                </div>
+                                <span class="text-white/40 text-sm font-light tracking-widest uppercase mb-2">Awaiting Parameters</span>
+                                <span class="text-white/20 text-[10px]">The prototype canvas is empty.</span>
+                            </div>
+
+                            <!-- Loading State -->
+                            <div id="ai-loading-state" class="absolute inset-0 bg-[#050508]/90 backdrop-blur-md z-30 flex flex-col items-center justify-center hidden">
+                                <div class="relative w-24 h-24 flex items-center justify-center mb-6">
+                                    <div class="absolute inset-0 border-t-2 border-cyan-400 rounded-full animate-spin"></div>
+                                    <div class="absolute inset-2 border-r-2 border-gold rounded-full animate-[spin_1.5s_reverse_infinite]"></div>
+                                    <i data-lucide="zap" class="w-6 h-6 text-cyan-400 animate-pulse"></i>
+                                </div>
+                                <span class="text-cyan-400 text-xs font-bold tracking-[0.2em] uppercase mb-1">Synthesizing Code...</span>
+                                <span class="text-white/40 text-[10px] uppercase font-mono" id="ai-loading-text">Constructing DOM elements</span>
+                            </div>
+
+                            <!-- The Actual Preview Window -->
+                            <iframe id="ai-preview-iframe" class="w-full h-full border-none absolute inset-0 z-10 opacity-0 transition-opacity duration-1000 bg-white"></iframe>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -910,7 +985,9 @@
             
             scene.add(new THREE.AmbientLight(0xffffff, 0.4)); 
 
+            // INTRO POSITIONS
             camera.position.set(0, 0, 7500);
+            earth.position.y = 0;
 
             // Interaction Event Listeners
             window.addEventListener('mousemove', (e) => {
@@ -918,59 +995,48 @@
                 mouseY = (e.clientY / window.innerHeight) - 0.5;
             });
 
-        // GSAP Flow
-        gsap.registerPlugin(ScrollTrigger);
+            // GSAP Flow
+            gsap.registerPlugin(ScrollTrigger);
 
-        const introTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#intro-void",
-                start: "top top",
-                end: "bottom top",
-                scrub: 1.2,
-                onUpdate: (self) => {
-                    camera.fov = 45 + (self.progress * 8);
-                    camera.updateProjectionMatrix();
-                }
-            }
-        });
+            // Sleek Automated Cinematic Intro (No scrolling required)
+            const masterTl = gsap.timeline();
 
-        // Auto-reveal text on page load (independent of scroll)
-        gsap.to(".intro-text", { opacity: 1, y: 0, filter: "blur(0px)", duration: 2, delay: 0.5, ease: "power2.out" });
-        gsap.to("#initial-scroll-indicator", { opacity: 1, duration: 1.5, delay: 2 });
+            // 1. Text Intro
+            masterTl.to(".intro-text", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.5, ease: "power2.out" })
+            
+            // 2. Camera Zoom & Earth Spin while text fades
+            .to(camera.position, { z: 40, duration: 3.5, ease: "power2.inOut" }, "+=0.3")
+            .to(earth.rotation, { y: Math.PI * 1.5, duration: 3.5, ease: "power2.inOut" }, "<")
+            .to(".intro-text", { opacity: 0, scale: 0.9, filter: "blur(10px)", duration: 1 }, "-=2.5")
+            
+            // 3. Preloader Screen
+            .to("#transition-screen", { autoAlpha: 1, duration: 0.5 }, "-=1") // Black screen fades in
+            
+            // SYNCHRONIZED LOADING BAR AND BANNER
+            .add("syncStart")
+            .to("#plane-banner", { opacity: 1, duration: 0.2 }, "syncStart") 
+            .to("#loader-bar", { width: "100%", duration: 5, ease: "power1.inOut" }, "syncStart") // Loader takes 5s
+            .to("#plane-banner", { left: "120%", duration: 5, ease: "none" }, "syncStart") // Plane flies taking 5s perfectly matched
+            
+            // 4. Reveal Final Content AFTER sync finishes
+            .to("#transition-screen", { autoAlpha: 0, duration: 0.8 }) // Natural sequence wait
+            .to("#main-content", { 
+                autoAlpha: 1, 
+                duration: 1, 
+                onComplete: () => ScrollTrigger.refresh() 
+            }, "-=0.4")
+            .from("#hero-content > *", { y: 30, opacity: 0, duration: 1, stagger: 0.2 }, "-=0.8");
 
-        // Fading Away (Exit as user starts scrolling)
-        introTl.to(".intro-text", { opacity: 0, scale: 0.9, filter: "blur(10px)", duration: 1.5 }, 0.5);
-        introTl.to("#initial-scroll-indicator", { opacity: 0, duration: 0.5 }, 0.5);
+            // Reveal Cart Button exactly at the Pricing Section
+            ScrollTrigger.create({
+                trigger: "#pricing",
+                start: "top 80%", 
+                onEnter: () => document.getElementById('cart-btn-container').classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none'),
+                onLeaveBack: () => document.getElementById('cart-btn-container').classList.add('opacity-0', 'translate-y-10', 'pointer-events-none')
+            });
 
-        introTl.to(camera.position, { z: 40, duration: 12, ease: "power1.inOut" }, 0)
-               .to(earth.rotation, { y: Math.PI * 1.8, duration: 12 }, 0);
-
-        // Transition Layer & Plane Animation (Delayed to let zoom finish)
-        introTl.to("#transition-screen", { autoAlpha: 1, duration: 1.5 }, 11.5)
-               .to("#loader-bar", { width: "100%", duration: 3 }, 12.5)
-               .to("#plane-banner", { opacity: 1, duration: 0.2 }, 12.0)
-               .to("#plane-banner", { left: "120%", duration: 3.5, ease: "power1.inOut" }, 12.0)
-               .to("#transition-screen", { autoAlpha: 0, duration: 1.5 }, 15.5);
-
-        introTl.to("#main-content", { autoAlpha: 1, duration: 1.5 }, 16);
-
-        ScrollTrigger.create({
-            trigger: "#intro-void",
-            start: "98% top", 
-            onEnter: () => document.getElementById('main-content').style.pointerEvents = 'auto',
-            onLeaveBack: () => document.getElementById('main-content').style.pointerEvents = 'none'
-        });
-
-        // Reveal Cart Button exactly at the Pricing Section
-        ScrollTrigger.create({
-            trigger: "#pricing",
-            start: "top 80%", 
-            onEnter: () => document.getElementById('cart-btn-container').classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none'),
-            onLeaveBack: () => document.getElementById('cart-btn-container').classList.add('opacity-0', 'translate-y-10', 'pointer-events-none')
-        });
-
-        // Section Reveal Animation
-        document.querySelectorAll('.reveal').forEach(el => {
+            // Section Reveal Animation
+            document.querySelectorAll('.reveal').forEach(el => {
                 gsap.from(el, { opacity: 0, y: 40, duration: 1.2, scrollTrigger: { trigger: el, start: "top 90%" } });
             });
 
@@ -999,11 +1065,10 @@
 
         } catch (error) {
             console.error("3D rendering failed or blocked. Fallback content is visible.", error);
-            // Ensure the main content still displays if WebGL completely fails
-            document.getElementById('main-content').style.opacity = '1';
+            document.getElementById('transition-screen').style.display = 'none';
+            document.getElementById('intro-overlay').style.display = 'none';
+            document.getElementById('main-content').style.opacity = 1;
             document.getElementById('main-content').style.visibility = 'visible';
-            document.getElementById('main-content').style.pointerEvents = 'auto';
-            document.getElementById('intro-void').style.display = 'none';
         }
 
         // --- CART & PAYMENT SYSTEM LOGIC ---
@@ -1258,6 +1323,141 @@
                     input.value = '';
                 });
             }, 500);
+        });
+
+        // --- AI PROTOTYPE ENGINE LOGIC ---
+        const generateProtoBtn = document.getElementById('generate-prototype-btn');
+        const aiPromptInput = document.getElementById('ai-prompt');
+        const aiIdleState = document.getElementById('ai-idle-state');
+        const aiLoadingState = document.getElementById('ai-loading-state');
+        const aiPreviewIframe = document.getElementById('ai-preview-iframe');
+        const aiLoadingText = document.getElementById('ai-loading-text');
+        const claimDesignContainer = document.getElementById('claim-design-container');
+
+        // Loading text animation
+        const loadingPhrases = [
+            "Bootstrapping Tailwind CSS...",
+            "Designing Hero Section...",
+            "Writing copy algorithms...",
+            "Applying premium typography...",
+            "Rendering final layout..."
+        ];
+
+        // Advanced Exponential Backoff Request Handler
+        const fetchWithRetry = async (url, options) => {
+            const delays = [1000, 2000, 4000, 8000, 16000];
+            for (let i = 0; i < delays.length; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) throw new Error("API request failed.");
+                    return await response.json();
+                } catch (error) {
+                    if (i === delays.length - 1) throw error;
+                    await new Promise(resolve => setTimeout(resolve, delays[i]));
+                }
+            }
+        };
+
+        generateProtoBtn.addEventListener('click', async () => {
+            const prompt = aiPromptInput.value.trim();
+            
+            if(!prompt) {
+                showToast("Please provide parameters for the AI.", true);
+                aiPromptInput.focus();
+                return;
+            }
+
+            // Set UI to loading state
+            generateProtoBtn.disabled = true;
+            const originalBtnText = generateProtoBtn.innerHTML;
+            generateProtoBtn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Processing...';
+            lucide.createIcons({ root: generateProtoBtn });
+            
+            aiIdleState.classList.add('hidden');
+            aiPreviewIframe.classList.remove('opacity-100');
+            aiPreviewIframe.classList.add('opacity-0');
+            aiLoadingState.classList.remove('hidden');
+            claimDesignContainer.classList.add('hidden');
+
+            // Cycle loading text
+            let phraseIndex = 0;
+            const phraseInterval = setInterval(() => {
+                phraseIndex = (phraseIndex + 1) % loadingPhrases.length;
+                aiLoadingText.textContent = loadingPhrases[phraseIndex];
+            }, 800);
+
+            try {
+                // We use the empty API key so the immersive environment handles the credentials securely
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                
+                const systemPrompt = `You are an elite, highly-paid frontend web designer working for Mighty Suite. 
+                Your task is to generate a SINGLE-FILE HTML prototype based on the user's request.
+                
+                CRITICAL INSTRUCTIONS:
+                1. Use HTML5 and load Tailwind CSS via CDN (<script src="https://cdn.tailwindcss.com"><\/script>).
+                2. Create a premium, high-converting layout (Header, Hero with Call-to-action, 3 Feature cards, and a simple Footer).
+                3. ALWAYS use a dark, sophisticated theme (bg-gray-900, text-white) with gold or cyan accents to match the Mighty Suite brand.
+                4. Write compelling, professional copy tailored to the user's prompt. Do NOT use Lorem Ipsum.
+                5. Make it responsive (use Tailwind's md: and lg: classes).
+                6. Output ONLY the raw, pure HTML string. 
+                7. DO NOT WRAP THE RESPONSE IN MARKDOWN BACKTICKS (\`\`\`html). Start directly with <!DOCTYPE html>.`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: `Create a professional website prototype for: ${prompt}` }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                };
+
+                const result = await fetchWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                let htmlContent = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (htmlContent) {
+                    // Strip markdown backticks if the model accidentally included them
+                    htmlContent = htmlContent.replace(/^```html\n?/gi, '').replace(/```$/g, '').trim();
+
+                    // Inject the generated HTML into the iframe
+                    aiPreviewIframe.srcdoc = htmlContent;
+
+                    // Wait for iframe to somewhat load before showing it
+                    setTimeout(() => {
+                        clearInterval(phraseInterval);
+                        aiLoadingState.classList.add('hidden');
+                        aiPreviewIframe.classList.remove('opacity-0');
+                        aiPreviewIframe.classList.add('opacity-100');
+                        claimDesignContainer.classList.remove('hidden');
+                        
+                        // Reset button
+                        generateProtoBtn.disabled = false;
+                        generateProtoBtn.innerHTML = '<i data-lucide="rotate-ccw" class="w-4 h-4"></i> Regenerate';
+                        lucide.createIcons({ root: generateProtoBtn });
+                        
+                        showToast("Neural blueprint compiled successfully.");
+                    }, 1500);
+
+                } else {
+                    throw new Error("No content generated.");
+                }
+
+            } catch (error) {
+                console.error("AI Generation Error:", error);
+                clearInterval(phraseInterval);
+                aiLoadingState.classList.add('hidden');
+                aiIdleState.classList.remove('hidden');
+                aiIdleState.innerHTML = `
+                    <i data-lucide="alert-triangle" class="w-10 h-10 text-red-500 mb-4 opacity-50"></i>
+                    <span class="text-white text-sm">Neural link failed. Please try again.</span>
+                `;
+                lucide.createIcons({ root: aiIdleState });
+                
+                generateProtoBtn.disabled = false;
+                generateProtoBtn.innerHTML = originalBtnText;
+                showToast("Failed to connect to Neural Engine.", true);
+            }
         });
 
     </script>
